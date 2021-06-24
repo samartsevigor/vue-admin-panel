@@ -2240,6 +2240,14 @@ export type Users = {
 }
 
 /** aggregated selection of "users" */
+export type News = {
+  __typename?: 'news'
+  /** An object relationship */
+  id?: Maybe<Scalars['String']>
+  title?: Maybe<Scalars['String']>
+  content?: Maybe<Scalars['String']>
+}
+
 export type Users_Aggregate = {
   __typename?: 'users_aggregate'
   aggregate?: Maybe<Users_Aggregate_Fields>
@@ -2450,6 +2458,11 @@ export type UserAccountFragment = { __typename: 'auth_accounts' } & Pick<
 >
 
 export type CurrentUserFragment = { __typename?: 'users' } & UserFragment
+
+export type NewsFragment = { __typename: 'news' } & Pick<
+  News,
+  'id' | 'title' | 'content'
+>
 
 export type UpdateCurrentUserMutationVariables = Exact<{
   userId: Scalars['uuid']

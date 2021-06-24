@@ -26,6 +26,14 @@ export const CurrentUserFragment = gql`
   }
   ${UserFragment}
 `
+export const NewsFragment = gql`
+  fragment News on news {
+    __typename
+    id
+    title
+    content
+  }
+`
 export const UpdateCurrentUserDocument = gql`
   mutation updateCurrentUser(
     $userId: uuid!
