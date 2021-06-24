@@ -1,9 +1,11 @@
 import { useCurrentUserSubscription } from '@/sdk/hooks'
-import { GetCurrentUserDocument } from '@/sdk/operations'
+import { GetCurrentUserDocument, GetNewsDocument } from '@/sdk/operations'
 import {
   CurrentUserFragment,
   GetCurrentUserQuery,
-  GetCurrentUserQueryVariables
+  GetCurrentUserQueryVariables,
+  GetNewsQuery,
+  NewsFragment
 } from '@/sdk/types'
 import { defaultError } from '@/types'
 import {
@@ -147,6 +149,7 @@ watch(auth.token, () => {
 })
 
 export const currentUser = ref<CurrentUserFragment | null>(null)
+export const news = ref<Array<NewsFragment> | null>(null)
 export const isAuthWithUser = computed(() => currentUser.value !== null)
 
 watch(auth.isAuth, value => {
@@ -164,6 +167,19 @@ export const loadUser = async () => {
         variables: { userId: auth.userId }
       })
       if (data.user) currentUser.value = data.user
+    }
+  } catch (err) {
+    config.graphqlErrorHandler(err)
+  }
+}
+
+export const loadNews = async () => {
+  try {
+    if (auth.userId) {
+      const { data } = await apolloClient.query<GetNewsQuery>({
+        query: GetNewsDocument
+      })
+      if (data.news) news.value = data.news
     }
   } catch (err) {
     config.graphqlErrorHandler(err)

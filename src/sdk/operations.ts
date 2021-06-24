@@ -26,6 +26,15 @@ export const CurrentUserFragment = gql`
   }
   ${UserFragment}
 `
+export const NewsFragment = gql`
+  fragment News on news {
+    content
+    created_at
+    id
+    title
+    updated_at
+  }
+`
 export const UpdateCurrentUserDocument = gql`
   mutation updateCurrentUser(
     $userId: uuid!
@@ -54,6 +63,14 @@ export const GetCurrentUserDocument = gql`
     }
   }
   ${CurrentUserFragment}
+`
+export const GetNewsDocument = gql`
+  query getNews {
+    news: news {
+      ...News
+    }
+  }
+  ${NewsFragment}
 `
 export const CurrentUserDocument = gql`
   subscription currentUser($userId: uuid!) {

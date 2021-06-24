@@ -236,7 +236,7 @@ export type Auth_Account_Roles = {
   account_id: Scalars['uuid']
   created_at: Scalars['timestamptz']
   id: Scalars['uuid']
-  role: Scalars['String']
+  role: Auth_Roles_Enum
   /** An object relationship */
   roleByRole: Auth_Roles
 }
@@ -284,7 +284,7 @@ export type Auth_Account_Roles_Bool_Exp = {
   account_id?: Maybe<Uuid_Comparison_Exp>
   created_at?: Maybe<Timestamptz_Comparison_Exp>
   id?: Maybe<Uuid_Comparison_Exp>
-  role?: Maybe<String_Comparison_Exp>
+  role?: Maybe<Auth_Roles_Enum_Comparison_Exp>
   roleByRole?: Maybe<Auth_Roles_Bool_Exp>
 }
 
@@ -302,7 +302,7 @@ export type Auth_Account_Roles_Insert_Input = {
   account_id?: Maybe<Scalars['uuid']>
   created_at?: Maybe<Scalars['timestamptz']>
   id?: Maybe<Scalars['uuid']>
-  role?: Maybe<Scalars['String']>
+  role?: Maybe<Auth_Roles_Enum>
   roleByRole?: Maybe<Auth_Roles_Obj_Rel_Insert_Input>
 }
 
@@ -312,7 +312,6 @@ export type Auth_Account_Roles_Max_Fields = {
   account_id?: Maybe<Scalars['uuid']>
   created_at?: Maybe<Scalars['timestamptz']>
   id?: Maybe<Scalars['uuid']>
-  role?: Maybe<Scalars['String']>
 }
 
 /** order by max() on columns of table "auth.account_roles" */
@@ -320,7 +319,6 @@ export type Auth_Account_Roles_Max_Order_By = {
   account_id?: Maybe<Order_By>
   created_at?: Maybe<Order_By>
   id?: Maybe<Order_By>
-  role?: Maybe<Order_By>
 }
 
 /** aggregate min on columns */
@@ -329,7 +327,6 @@ export type Auth_Account_Roles_Min_Fields = {
   account_id?: Maybe<Scalars['uuid']>
   created_at?: Maybe<Scalars['timestamptz']>
   id?: Maybe<Scalars['uuid']>
-  role?: Maybe<Scalars['String']>
 }
 
 /** order by min() on columns of table "auth.account_roles" */
@@ -337,7 +334,6 @@ export type Auth_Account_Roles_Min_Order_By = {
   account_id?: Maybe<Order_By>
   created_at?: Maybe<Order_By>
   id?: Maybe<Order_By>
-  role?: Maybe<Order_By>
 }
 
 /** response of any mutation on the table "auth.account_roles" */
@@ -394,7 +390,7 @@ export type Auth_Account_Roles_Set_Input = {
   account_id?: Maybe<Scalars['uuid']>
   created_at?: Maybe<Scalars['timestamptz']>
   id?: Maybe<Scalars['uuid']>
-  role?: Maybe<Scalars['String']>
+  role?: Maybe<Auth_Roles_Enum>
 }
 
 /** update columns of table "auth.account_roles" */
@@ -423,7 +419,7 @@ export type Auth_Accounts = {
   active: Scalars['Boolean']
   created_at: Scalars['timestamptz']
   custom_register_data?: Maybe<Scalars['jsonb']>
-  default_role: Scalars['String']
+  default_role: Auth_Roles_Enum
   email?: Maybe<Scalars['citext']>
   firebase_uid?: Maybe<Scalars['String']>
   id: Scalars['uuid']
@@ -555,7 +551,7 @@ export type Auth_Accounts_Bool_Exp = {
   active?: Maybe<Boolean_Comparison_Exp>
   created_at?: Maybe<Timestamptz_Comparison_Exp>
   custom_register_data?: Maybe<Jsonb_Comparison_Exp>
-  default_role?: Maybe<String_Comparison_Exp>
+  default_role?: Maybe<Auth_Roles_Enum_Comparison_Exp>
   email?: Maybe<Citext_Comparison_Exp>
   firebase_uid?: Maybe<String_Comparison_Exp>
   id?: Maybe<Uuid_Comparison_Exp>
@@ -611,7 +607,7 @@ export type Auth_Accounts_Insert_Input = {
   active?: Maybe<Scalars['Boolean']>
   created_at?: Maybe<Scalars['timestamptz']>
   custom_register_data?: Maybe<Scalars['jsonb']>
-  default_role?: Maybe<Scalars['String']>
+  default_role?: Maybe<Auth_Roles_Enum>
   email?: Maybe<Scalars['citext']>
   firebase_uid?: Maybe<Scalars['String']>
   id?: Maybe<Scalars['uuid']>
@@ -634,7 +630,6 @@ export type Auth_Accounts_Insert_Input = {
 export type Auth_Accounts_Max_Fields = {
   __typename?: 'auth_accounts_max_fields'
   created_at?: Maybe<Scalars['timestamptz']>
-  default_role?: Maybe<Scalars['String']>
   email?: Maybe<Scalars['citext']>
   firebase_uid?: Maybe<Scalars['String']>
   id?: Maybe<Scalars['uuid']>
@@ -651,7 +646,6 @@ export type Auth_Accounts_Max_Fields = {
 /** order by max() on columns of table "auth.accounts" */
 export type Auth_Accounts_Max_Order_By = {
   created_at?: Maybe<Order_By>
-  default_role?: Maybe<Order_By>
   email?: Maybe<Order_By>
   firebase_uid?: Maybe<Order_By>
   id?: Maybe<Order_By>
@@ -669,7 +663,6 @@ export type Auth_Accounts_Max_Order_By = {
 export type Auth_Accounts_Min_Fields = {
   __typename?: 'auth_accounts_min_fields'
   created_at?: Maybe<Scalars['timestamptz']>
-  default_role?: Maybe<Scalars['String']>
   email?: Maybe<Scalars['citext']>
   firebase_uid?: Maybe<Scalars['String']>
   id?: Maybe<Scalars['uuid']>
@@ -686,7 +679,6 @@ export type Auth_Accounts_Min_Fields = {
 /** order by min() on columns of table "auth.accounts" */
 export type Auth_Accounts_Min_Order_By = {
   created_at?: Maybe<Order_By>
-  default_role?: Maybe<Order_By>
   email?: Maybe<Order_By>
   firebase_uid?: Maybe<Order_By>
   id?: Maybe<Order_By>
@@ -801,7 +793,7 @@ export type Auth_Accounts_Set_Input = {
   active?: Maybe<Scalars['Boolean']>
   created_at?: Maybe<Scalars['timestamptz']>
   custom_register_data?: Maybe<Scalars['jsonb']>
-  default_role?: Maybe<Scalars['String']>
+  default_role?: Maybe<Auth_Roles_Enum>
   email?: Maybe<Scalars['citext']>
   firebase_uid?: Maybe<Scalars['String']>
   id?: Maybe<Scalars['uuid']>
@@ -1284,6 +1276,20 @@ export enum Auth_Roles_Constraint {
   RolesPkey = 'roles_pkey'
 }
 
+export enum Auth_Roles_Enum {
+  Anonymous = 'anonymous',
+  User = 'user'
+}
+
+/** expression to compare columns of type auth_roles_enum. All fields are combined with logical 'AND'. */
+export type Auth_Roles_Enum_Comparison_Exp = {
+  _eq?: Maybe<Auth_Roles_Enum>
+  _in?: Maybe<Array<Auth_Roles_Enum>>
+  _is_null?: Maybe<Scalars['Boolean']>
+  _neq?: Maybe<Auth_Roles_Enum>
+  _nin?: Maybe<Array<Auth_Roles_Enum>>
+}
+
 /** input type for inserting data into table "auth.roles" */
 export type Auth_Roles_Insert_Input = {
   account_roles?: Maybe<Auth_Account_Roles_Arr_Rel_Insert_Input>
@@ -1448,6 +1454,10 @@ export type Mutation_Root = {
   delete_auth_roles?: Maybe<Auth_Roles_Mutation_Response>
   /** delete single row from the table: "auth.roles" */
   delete_auth_roles_by_pk?: Maybe<Auth_Roles>
+  /** delete data from the table: "news" */
+  delete_news?: Maybe<News_Mutation_Response>
+  /** delete single row from the table: "news" */
+  delete_news_by_pk?: Maybe<News>
   /** delete data from the table: "users" */
   delete_users?: Maybe<Users_Mutation_Response>
   /** delete single row from the table: "users" */
@@ -1478,6 +1488,10 @@ export type Mutation_Root = {
   insert_auth_roles?: Maybe<Auth_Roles_Mutation_Response>
   /** insert a single row into the table: "auth.roles" */
   insert_auth_roles_one?: Maybe<Auth_Roles>
+  /** insert data into the table: "news" */
+  insert_news?: Maybe<News_Mutation_Response>
+  /** insert a single row into the table: "news" */
+  insert_news_one?: Maybe<News>
   /** insert data into the table: "users" */
   insert_users?: Maybe<Users_Mutation_Response>
   /** insert a single row into the table: "users" */
@@ -1508,6 +1522,10 @@ export type Mutation_Root = {
   update_auth_roles?: Maybe<Auth_Roles_Mutation_Response>
   /** update single row of the table: "auth.roles" */
   update_auth_roles_by_pk?: Maybe<Auth_Roles>
+  /** update data of the table: "news" */
+  update_news?: Maybe<News_Mutation_Response>
+  /** update single row of the table: "news" */
+  update_news_by_pk?: Maybe<News>
   /** update data of the table: "users" */
   update_users?: Maybe<Users_Mutation_Response>
   /** update single row of the table: "users" */
@@ -1572,6 +1590,16 @@ export type Mutation_RootDelete_Auth_RolesArgs = {
 /** mutation root */
 export type Mutation_RootDelete_Auth_Roles_By_PkArgs = {
   role: Scalars['String']
+}
+
+/** mutation root */
+export type Mutation_RootDelete_NewsArgs = {
+  where: News_Bool_Exp
+}
+
+/** mutation root */
+export type Mutation_RootDelete_News_By_PkArgs = {
+  id: Scalars['uuid']
 }
 
 /** mutation root */
@@ -1654,6 +1682,18 @@ export type Mutation_RootInsert_Auth_RolesArgs = {
 export type Mutation_RootInsert_Auth_Roles_OneArgs = {
   object: Auth_Roles_Insert_Input
   on_conflict?: Maybe<Auth_Roles_On_Conflict>
+}
+
+/** mutation root */
+export type Mutation_RootInsert_NewsArgs = {
+  objects: Array<News_Insert_Input>
+  on_conflict?: Maybe<News_On_Conflict>
+}
+
+/** mutation root */
+export type Mutation_RootInsert_News_OneArgs = {
+  object: News_Insert_Input
+  on_conflict?: Maybe<News_On_Conflict>
 }
 
 /** mutation root */
@@ -1751,6 +1791,18 @@ export type Mutation_RootUpdate_Auth_Roles_By_PkArgs = {
 }
 
 /** mutation root */
+export type Mutation_RootUpdate_NewsArgs = {
+  _set?: Maybe<News_Set_Input>
+  where: News_Bool_Exp
+}
+
+/** mutation root */
+export type Mutation_RootUpdate_News_By_PkArgs = {
+  _set?: Maybe<News_Set_Input>
+  pk_columns: News_Pk_Columns_Input
+}
+
+/** mutation root */
 export type Mutation_RootUpdate_UsersArgs = {
   _set?: Maybe<Users_Set_Input>
   where: Users_Bool_Exp
@@ -1760,6 +1812,195 @@ export type Mutation_RootUpdate_UsersArgs = {
 export type Mutation_RootUpdate_Users_By_PkArgs = {
   _set?: Maybe<Users_Set_Input>
   pk_columns: Users_Pk_Columns_Input
+}
+
+/**
+ * Новости
+ *
+ *
+ * columns and relationships of "news"
+ */
+export type News = {
+  __typename?: 'news'
+  /** Содержание новости */
+  content: Scalars['String']
+  created_at: Scalars['timestamptz']
+  id: Scalars['uuid']
+  /** Заголовок новости */
+  title: Scalars['String']
+  updated_at: Scalars['timestamptz']
+}
+
+/** aggregated selection of "news" */
+export type News_Aggregate = {
+  __typename?: 'news_aggregate'
+  aggregate?: Maybe<News_Aggregate_Fields>
+  nodes: Array<News>
+}
+
+/** aggregate fields of "news" */
+export type News_Aggregate_Fields = {
+  __typename?: 'news_aggregate_fields'
+  count?: Maybe<Scalars['Int']>
+  max?: Maybe<News_Max_Fields>
+  min?: Maybe<News_Min_Fields>
+}
+
+/** aggregate fields of "news" */
+export type News_Aggregate_FieldsCountArgs = {
+  columns?: Maybe<Array<News_Select_Column>>
+  distinct?: Maybe<Scalars['Boolean']>
+}
+
+/** order by aggregate values of table "news" */
+export type News_Aggregate_Order_By = {
+  count?: Maybe<Order_By>
+  max?: Maybe<News_Max_Order_By>
+  min?: Maybe<News_Min_Order_By>
+}
+
+/** input type for inserting array relation for remote table "news" */
+export type News_Arr_Rel_Insert_Input = {
+  data: Array<News_Insert_Input>
+  on_conflict?: Maybe<News_On_Conflict>
+}
+
+/** Boolean expression to filter rows from the table "news". All fields are combined with a logical 'AND'. */
+export type News_Bool_Exp = {
+  _and?: Maybe<Array<Maybe<News_Bool_Exp>>>
+  _not?: Maybe<News_Bool_Exp>
+  _or?: Maybe<Array<Maybe<News_Bool_Exp>>>
+  content?: Maybe<String_Comparison_Exp>
+  created_at?: Maybe<Timestamptz_Comparison_Exp>
+  id?: Maybe<Uuid_Comparison_Exp>
+  title?: Maybe<String_Comparison_Exp>
+  updated_at?: Maybe<Timestamptz_Comparison_Exp>
+}
+
+/** unique or primary key constraints on table "news" */
+export enum News_Constraint {
+  /** unique or primary key constraint */
+  NewsPkey = 'news_pkey'
+}
+
+/** input type for inserting data into table "news" */
+export type News_Insert_Input = {
+  content?: Maybe<Scalars['String']>
+  created_at?: Maybe<Scalars['timestamptz']>
+  id?: Maybe<Scalars['uuid']>
+  title?: Maybe<Scalars['String']>
+  updated_at?: Maybe<Scalars['timestamptz']>
+}
+
+/** aggregate max on columns */
+export type News_Max_Fields = {
+  __typename?: 'news_max_fields'
+  content?: Maybe<Scalars['String']>
+  created_at?: Maybe<Scalars['timestamptz']>
+  id?: Maybe<Scalars['uuid']>
+  title?: Maybe<Scalars['String']>
+  updated_at?: Maybe<Scalars['timestamptz']>
+}
+
+/** order by max() on columns of table "news" */
+export type News_Max_Order_By = {
+  content?: Maybe<Order_By>
+  created_at?: Maybe<Order_By>
+  id?: Maybe<Order_By>
+  title?: Maybe<Order_By>
+  updated_at?: Maybe<Order_By>
+}
+
+/** aggregate min on columns */
+export type News_Min_Fields = {
+  __typename?: 'news_min_fields'
+  content?: Maybe<Scalars['String']>
+  created_at?: Maybe<Scalars['timestamptz']>
+  id?: Maybe<Scalars['uuid']>
+  title?: Maybe<Scalars['String']>
+  updated_at?: Maybe<Scalars['timestamptz']>
+}
+
+/** order by min() on columns of table "news" */
+export type News_Min_Order_By = {
+  content?: Maybe<Order_By>
+  created_at?: Maybe<Order_By>
+  id?: Maybe<Order_By>
+  title?: Maybe<Order_By>
+  updated_at?: Maybe<Order_By>
+}
+
+/** response of any mutation on the table "news" */
+export type News_Mutation_Response = {
+  __typename?: 'news_mutation_response'
+  /** number of affected rows by the mutation */
+  affected_rows: Scalars['Int']
+  /** data of the affected rows by the mutation */
+  returning: Array<News>
+}
+
+/** input type for inserting object relation for remote table "news" */
+export type News_Obj_Rel_Insert_Input = {
+  data: News_Insert_Input
+  on_conflict?: Maybe<News_On_Conflict>
+}
+
+/** on conflict condition type for table "news" */
+export type News_On_Conflict = {
+  constraint: News_Constraint
+  update_columns: Array<News_Update_Column>
+  where?: Maybe<News_Bool_Exp>
+}
+
+/** ordering options when selecting data from "news" */
+export type News_Order_By = {
+  content?: Maybe<Order_By>
+  created_at?: Maybe<Order_By>
+  id?: Maybe<Order_By>
+  title?: Maybe<Order_By>
+  updated_at?: Maybe<Order_By>
+}
+
+/** primary key columns input for table: "news" */
+export type News_Pk_Columns_Input = {
+  id: Scalars['uuid']
+}
+
+/** select columns of table "news" */
+export enum News_Select_Column {
+  /** column name */
+  Content = 'content',
+  /** column name */
+  CreatedAt = 'created_at',
+  /** column name */
+  Id = 'id',
+  /** column name */
+  Title = 'title',
+  /** column name */
+  UpdatedAt = 'updated_at'
+}
+
+/** input type for updating data in table "news" */
+export type News_Set_Input = {
+  content?: Maybe<Scalars['String']>
+  created_at?: Maybe<Scalars['timestamptz']>
+  id?: Maybe<Scalars['uuid']>
+  title?: Maybe<Scalars['String']>
+  updated_at?: Maybe<Scalars['timestamptz']>
+}
+
+/** update columns of table "news" */
+export enum News_Update_Column {
+  /** column name */
+  Content = 'content',
+  /** column name */
+  CreatedAt = 'created_at',
+  /** column name */
+  Id = 'id',
+  /** column name */
+  Title = 'title',
+  /** column name */
+  UpdatedAt = 'updated_at'
 }
 
 /** column ordering options */
@@ -1817,6 +2058,12 @@ export type Query_Root = {
   auth_roles_aggregate: Auth_Roles_Aggregate
   /** fetch data from the table: "auth.roles" using primary key columns */
   auth_roles_by_pk?: Maybe<Auth_Roles>
+  /** fetch data from the table: "news" */
+  news: Array<News>
+  /** fetch aggregated fields from the table: "news" */
+  news_aggregate: News_Aggregate
+  /** fetch data from the table: "news" using primary key columns */
+  news_by_pk?: Maybe<News>
   /** fetch data from the table: "users" */
   users: Array<Users>
   /** fetch aggregated fields from the table: "users" */
@@ -1964,6 +2211,29 @@ export type Query_RootAuth_Roles_By_PkArgs = {
 }
 
 /** query root */
+export type Query_RootNewsArgs = {
+  distinct_on?: Maybe<Array<News_Select_Column>>
+  limit?: Maybe<Scalars['Int']>
+  offset?: Maybe<Scalars['Int']>
+  order_by?: Maybe<Array<News_Order_By>>
+  where?: Maybe<News_Bool_Exp>
+}
+
+/** query root */
+export type Query_RootNews_AggregateArgs = {
+  distinct_on?: Maybe<Array<News_Select_Column>>
+  limit?: Maybe<Scalars['Int']>
+  offset?: Maybe<Scalars['Int']>
+  order_by?: Maybe<Array<News_Order_By>>
+  where?: Maybe<News_Bool_Exp>
+}
+
+/** query root */
+export type Query_RootNews_By_PkArgs = {
+  id: Scalars['uuid']
+}
+
+/** query root */
 export type Query_RootUsersArgs = {
   distinct_on?: Maybe<Array<Users_Select_Column>>
   limit?: Maybe<Scalars['Int']>
@@ -2044,6 +2314,12 @@ export type Subscription_Root = {
   auth_roles_aggregate: Auth_Roles_Aggregate
   /** fetch data from the table: "auth.roles" using primary key columns */
   auth_roles_by_pk?: Maybe<Auth_Roles>
+  /** fetch data from the table: "news" */
+  news: Array<News>
+  /** fetch aggregated fields from the table: "news" */
+  news_aggregate: News_Aggregate
+  /** fetch data from the table: "news" using primary key columns */
+  news_by_pk?: Maybe<News>
   /** fetch data from the table: "users" */
   users: Array<Users>
   /** fetch aggregated fields from the table: "users" */
@@ -2188,6 +2464,29 @@ export type Subscription_RootAuth_Roles_AggregateArgs = {
 /** subscription root */
 export type Subscription_RootAuth_Roles_By_PkArgs = {
   role: Scalars['String']
+}
+
+/** subscription root */
+export type Subscription_RootNewsArgs = {
+  distinct_on?: Maybe<Array<News_Select_Column>>
+  limit?: Maybe<Scalars['Int']>
+  offset?: Maybe<Scalars['Int']>
+  order_by?: Maybe<Array<News_Order_By>>
+  where?: Maybe<News_Bool_Exp>
+}
+
+/** subscription root */
+export type Subscription_RootNews_AggregateArgs = {
+  distinct_on?: Maybe<Array<News_Select_Column>>
+  limit?: Maybe<Scalars['Int']>
+  offset?: Maybe<Scalars['Int']>
+  order_by?: Maybe<Array<News_Order_By>>
+  where?: Maybe<News_Bool_Exp>
+}
+
+/** subscription root */
+export type Subscription_RootNews_By_PkArgs = {
+  id: Scalars['uuid']
 }
 
 /** subscription root */
@@ -2451,6 +2750,11 @@ export type UserAccountFragment = { __typename: 'auth_accounts' } & Pick<
 
 export type CurrentUserFragment = { __typename?: 'users' } & UserFragment
 
+export type NewsFragment = { __typename?: 'news' } & Pick<
+  News,
+  'content' | 'created_at' | 'id' | 'title' | 'updated_at'
+>
+
 export type UpdateCurrentUserMutationVariables = Exact<{
   userId: Scalars['uuid']
   user: Users_Set_Input
@@ -2472,6 +2776,12 @@ export type GetCurrentUserQueryVariables = Exact<{
 
 export type GetCurrentUserQuery = { __typename?: 'query_root' } & {
   user?: Maybe<{ __typename?: 'users' } & CurrentUserFragment>
+}
+
+export type GetNewsQueryVariables = Exact<{ [key: string]: never }>
+
+export type GetNewsQuery = { __typename?: 'query_root' } & {
+  news: Array<{ __typename?: 'news' } & NewsFragment>
 }
 
 export type CurrentUserSubscriptionVariables = Exact<{

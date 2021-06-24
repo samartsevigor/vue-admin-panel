@@ -21,8 +21,9 @@ fragment CurrentUser on users {
 }
 
 fragment News on news {
-  __typename
+  content
+  created_at
   id
   title
-  content
+  updated_at
 }

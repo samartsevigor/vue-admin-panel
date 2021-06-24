@@ -98,6 +98,51 @@ export type GetCurrentUserQueryCompositionFunctionResult = VueApolloComposable.U
 >
 
 /**
+ * __useGetNewsQuery__
+ *
+ * To run a query within a Vue component, call `useGetNewsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetNewsQuery` returns an object from Apollo Client that contains result, loading and error properties
+ * you can use to render your UI.
+ *
+ * @param options that will be passed into the query, supported options are listed on: https://v4.apollo.vuejs.org/guide-composable/query.html#options;
+ *
+ * @example
+ * const { result, loading, error } = useGetNewsQuery(
+ *   {
+ *   }
+ * );
+ */
+export function useGetNewsQuery(
+  options:
+    | VueApolloComposable.UseQueryOptions<
+        Types.GetNewsQuery,
+        Types.GetNewsQueryVariables
+      >
+    | VueCompositionApi.Ref<
+        VueApolloComposable.UseQueryOptions<
+          Types.GetNewsQuery,
+          Types.GetNewsQueryVariables
+        >
+      >
+    | ReactiveFunction<
+        VueApolloComposable.UseQueryOptions<
+          Types.GetNewsQuery,
+          Types.GetNewsQueryVariables
+        >
+      > = {}
+) {
+  return VueApolloComposable.useQuery<Types.GetNewsQuery, undefined>(
+    Operations.GetNewsDocument,
+    undefined,
+    options
+  )
+}
+export type GetNewsQueryCompositionFunctionResult = VueApolloComposable.UseQueryReturn<
+  Types.GetNewsQuery,
+  Types.GetNewsQueryVariables
+>
+
+/**
  * __useCurrentUserSubscription__
  *
  * To run a query within a Vue component, call `useCurrentUserSubscription` and pass it any options that fit your needs.
